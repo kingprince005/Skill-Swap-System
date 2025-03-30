@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap AI - Find Your Perfect Match</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="skillform.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Main Content -->
+    <main class="skill-match-container">
+        <section class="skill-match-header">
+            <h1>Find Your Perfect Skill Match</h1>
+            <p>Our AI will analyze thousands of users to find the best matches for your learning journey.</p>
+        </section>
+
+        <section class="skill-match-form-container">
+            <div class="form-container">
+                <h2>What would you like to learn?</h2>
+                <form id="skillMatchForm">
+                    <div class="form-group">
+                        <label for="fieldSelector">Select a field/category:</label>
+                        <select id="fieldSelector" class="form-control">
+                            <option value="all">All Fields</option>
+                            <option value="technology">Technology</option>
+                            <option value="creative">Creative Arts</option>
+                            <option value="business">Business</option>
+                            <option value="language">Languages</option>
+                            <option value="music">Music</option>
+                            <option value="cooking">Cooking & Culinary</option>
+                            <option value="fitness">Fitness & Wellness</option>
+                            <option value="outdoor">Outdoor Skills</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skillsWanted">Skills I want to learn:</label>
+                        <div class="tag-input-container">
+                            <div id="selectedSkillsWanted" class="selected-tags"></div>
+                            <input type="text" id="skillsWantedInput" placeholder="Type a skill and press Enter">
+                        </div>
+                        <div id="skillSuggestions" class="skill-suggestions"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skillsOffered">Skills I can teach (optional):</label>
+                        <div class="tag-input-container">
+                            <div id="selectedSkillsOffered" class="selected-tags"></div>
+                            <input type="text" id="skillsOfferedInput" placeholder="Type a skill and press Enter">
+                        </div>
+                        <div id="offeredSkillSuggestions" class="skill-suggestions"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="availabilityPreference">My availability:</label>
+                            <select id="availabilityPreference">
+                                <option value="">Any availability</option>
+                                <option value="weekday_mornings">Weekday Mornings</option>
+                                <option value="weekday_afternoons">Weekday Afternoons</option>
+                                <option value="weekday_evenings">Weekday Evenings</option>
+                                <option value="weekend_mornings">Weekend Mornings</option>
+                                <option value="weekend_afternoons">Weekend Afternoons</option>
+                                <option value="weekend_evenings">Weekend Evenings</option>
+                            </select>
+                        </div>
+                        <div class="form-group half">
+                            <label for="experienceLevel">Their experience level:</label>
+                            <select id="experienceLevel">
+                                <option value="">Any experience level</option>
+                                <option value="beginner">Beginner (1-2 years)</option>
+                                <option value="intermediate">Intermediate (3-5 years)</option>
+                                <option value="advanced">Advanced (5+ years)</option>
+                                <option value="expert">Expert (10+ years)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="certificationPreference">Certification preference:</label>
+                            <select id="certificationPreference">
+                                <option value="">Any certification status</option>
+                                <option value="certified">Certified only</option>
+                                <option value="non_certified">No certification needed</option>
+                            </select>
+                        </div>
+                        <div class="form-group half">
+                            <label for="matchCount">Number of matches:</label>
+                            <select id="matchCount">
+                                <option value="5">5 matches</option>
+                                <option value="10" selected>10 matches</option>
+                                <option value="20">20 matches</option>
+                                <option value="50">50 matches</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="advanced-filters-toggle">
+                        <button type="button" id="toggleAdvancedFilters">
+                            <i class="fas fa-sliders-h"></i> Advanced Filters
+                        </button>
+                    </div>
+
+                    <div id="advancedFilters" class="advanced-filters" style="display: none;">
+                        <div class="form-group">
+                            <label for="teachingStylePreference">Preferred teaching style:</label>
+                            <select id="teachingStylePreference">
+                                <option value="">Any teaching style</option>
+                                <option value="hands_on">Hands-on, practical</option>
+                                <option value="theoretical">Theoretical, conceptual</option>
+                                <option value="project_based">Project-based</option>
+                                <option value="mentor_style">Mentorship style</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="locationPreference">Location preference:</label>
+                            <select id="locationPreference">
+                                <option value="">Any location</option>
+                                <option value="local">Local only (same city)</option>
+                                <option value="remote">Remote only</option>
+                                <option value="hybrid">Hybrid (both options)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="languagePreference">Language preference:</label>
+                            <select id="languagePreference">
+                                <option value="">Any language</option>
+                                <option value="english">English</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="french">French</option>
+                                <option value="german">German</option>
+                                <option value="chinese">Chinese</option>
+                                <option value="hindi">Hindi</option>
+                                <option value="japanese">Japanese</option>
+                                <option value="korean">Korean</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="primary-button">
+                            <i class="fas fa-search"></i> Find Matches
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="side-info">
+                <div class="info-card">
+                    <h3><i class="fas fa-brain"></i> AI-Powered Matching</h3>
+                    <p>Our advanced algorithm analyzes more than just skills. It considers teaching style, experience, certifications and more to find your perfect match.</p>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-chart-line"></i> Success Stories</h3>
+                    <div class="success-story">
+                        <div class="story-header">
+                            <img src="../Image/quality education.jpg" alt="User Avatar" class="avatar">
+                            <div>
+                                <h4>Jennifer T.</h4>
+                                <p class="story-skills">Web Design ↔ Python</p>
+                            </div>
+                        </div>
+                        <p>"I traded my web design skills for Python programming and now I've launched my data visualization career!"</p>
+                    </div>
+                    <div class="success-story">
+                        <div class="story-header">
+                            <img src="../Image/photography.jpg" alt="User Avatar" class="avatar">
+                            <div>
+                                <h4>Michael K.</h4>
+                                <p class="story-skills">Photography ↔ Spanish</p>
+                            </div>
+                        </div>
+                        <p>"I taught photography and learned Spanish. Now I'm doing photo shoots across Latin America!"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section - Hidden by default -->
+        <section id="matchResults" class="match-results-section" style="display: none;">
+            <h2>Your Matching Results</h2>
+            <p class="results-summary">Our AI has found <span id="matchCount">0</span> great matches based on your criteria!</p>
+            
+            <div class="filter-controls">
+                <div class="sort-options">
+                    <span>Sort by:</span>
+                    <div class="sort-buttons">
+                        <button class="sort-btn active" data-sort="match_score"><i class="fas fa-percentage"></i> Match Score</button>
+                        <button class="sort-btn" data-sort="experience"><i class="fas fa-briefcase"></i> Experience</button>
+                        <button class="sort-btn" data-sort="rating"><i class="fas fa-star"></i> Rating</button>
+                        <button class="sort-btn" data-sort="availability"><i class="fas fa-calendar-check"></i> Availability</button>
+                    </div>
+                </div>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
+                    <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
+                </div>
+            </div>
+            
+            <div id="matchesList" class="matches-grid">
+                <!-- Matches will be populated by JavaScript -->
+            </div>
+            
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No matches found</h3>
+                <p>Try adjusting your criteria to find more matching opportunities.</p>
+                <button class="secondary-button" onclick="document.getElementById('skillMatchForm').scrollIntoView({behavior: 'smooth'})">
+                    Adjust Criteria
+                </button>
+            </div>
+            
+            <div class="pagination">
+                <button id="prevPage" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                <div id="pageIndicator">Page 1 of 1</div>
+                <button id="nextPage" disabled>Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+        
+        <!-- Loading Indicator - Hidden by default -->
+        <div id="loadingIndicator" class="loading-container" style="display: none;">
+            <div class="loading-content">
+                <div class="spinner">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <p class="loading-text">Our AI is finding your perfect matches...</p>
+                <div class="loading-progress">
+                    <div class="progress-bar" id="searchProgress"></div>
+                </div>
+                <div class="loading-steps">
+                    <div class="step active">Analyzing preferences</div>
+                    <div class="step">Searching database</div>
+                    <div class="step">Calculating compatibility</div>
+                    <div class="step">Ranking matches</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Match Detail Modal -->
+    <div id="matchDetailModal" class="modal match-detail-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="match-detail-container">
+                <div class="match-profile-header">
+                    <div class="match-avatar">
+                        <span id="matchInitial">J</span>
+                    </div>
+                    <div class="match-basic-info">
+                        <h2 id="matchName">John Doe</h2>
+                        <div class="match-rating">
+                            <span id="matchRating">4.8</span>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span id="matchReviewCount">(42 reviews)</span>
+                        </div>
+                        <div class="match-details">
+                            <span id="matchLocation"><i class="fas fa-map-marker-alt"></i> New York, USA</span>
+                            <span id="matchExperience"><i class="fas fa-briefcase"></i> 7 years experience</span>
+                            <span><i class="fas fa-graduation-cap"></i> Advanced Level</span>
+                            <span><i class="fas fa-language"></i> English, Spanish</span>
+                        </div>
+                    </div>
+                    <div class="match-score">
+                        <div class="score-circle">
+                            <span id="compatibilityScore">92%</span>
+                        </div>
+                        <span class="score-label">Match Score</span>
+                    </div>
+                </div>
+
+                <div class="match-body">
+                    <div class="match-section match-bio">
+                        <h3><i class="fas fa-user-circle"></i> About</h3>
+                        <p id="matchBio">Full-stack developer with a passion for teaching and sharing knowledge. I specialize in React, Node.js, and modern JavaScript. I believe in hands-on learning and project-based approaches.</p>
+                    </div>
+
+                    <div class="match-section match-skills">
+                        <h3><i class="fas fa-brain"></i> Skills</h3>
+                        <div class="skills-container">
+                            <div class="skills-column">
+                                <h4>Can Teach You</h4>
+                                <div id="teachSkills" class="skill-tags">
+                                    <!-- Skills populated by JS -->
+                                </div>
+                            </div>
+                            <div class="skills-column">
+                                <h4>Wants to Learn</h4>
+                                <div id="learnSkills" class="skill-tags">
+                                    <!-- Skills populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="match-row">
+                        <div class="match-section match-availability">
+                            <h3><i class="fas fa-calendar-alt"></i> Availability</h3>
+                            <div id="availabilityData" class="availability-grid">
+                                <!-- Availability populated by JS -->
+                            </div>
+                        </div>
+
+                        <div class="match-section match-certifications">
+                            <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                            <ul id="certificationsList" class="certifications-list">
+                                <!-- Certifications populated by JS -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="match-section match-reviews">
+                        <h3><i class="fas fa-comment-alt"></i> Reviews</h3>
+                        <div id="reviewsList" class="reviews-list">
+                            <!-- Reviews populated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="match-actions">
+                        <button class="contact-btn"><i class="fas fa-comments"></i> Contact</button>
+                        <button class="schedule-btn"><i class="fas fa-calendar-alt"></i> Schedule Session</button>
+                        <button class="bookmark-btn"><i class="far fa-bookmark"></i> Save for Later</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About SkillSwap AI</h3>
+                <p>Empowering individuals to learn and grow through AI-powered skill exchange. Connect with peers, share knowledge, and develop new skills together.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="#" onclick="openLoginModal()">Login</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Popular Skills</h3>
+                <ul>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Data Science</a></li>
+                    <li><a href="#">UI/UX Design</a></li>
+                    <li><a href="#">Mobile Development</a></li>
+                    <li><a href="#">Digital Marketing</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> support@skillswapai.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Digital City</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 SkillSwap AI. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            <p class="project-credit">Project by <a href="#">Hack Hustles</a></p>
+        </div>
+    </footer>
+
+    <script src="users-data.js"></script>
+    <script src="skillform.js"></script>
+</body>
+</html>

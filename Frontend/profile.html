@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - My Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>SkillSwap</h1>
+        </div>
+        <div class="search-container">
+            <input type="text" id="skillSearch" placeholder="Search for skills...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="skills.html">Find Skills</a>
+            <a href="messages.html">Messages</a>
+            <div class="profile-dropdown" id="profileDropdown">
+                <div class="profile-icon" onclick="toggleDropdown()">
+                    <span id="userInitial">U</span>
+                </div>
+                <div class="dropdown-menu">
+                    <a href="profile.html" class="active">My Profile</a>
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="profile-container">
+        <div class="profile-header">
+            <div class="profile-cover"></div>
+            <div class="profile-info">
+                <div class="profile-avatar">
+                    <span id="profileAvatar">U</span>
+                    <div class="avatar-upload">
+                        <i class="fas fa-camera"></i>
+                        <input type="file" id="avatarUpload" accept="image/*">
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <h1 id="profileName">User Name</h1>
+                    <p id="profileLocation"><i class="fas fa-map-marker-alt"></i> <span>Add your location</span></p>
+                </div>
+                <button id="editProfileBtn" class="edit-profile-btn">
+                    <i class="fas fa-edit"></i> Edit Profile
+                </button>
+            </div>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-sidebar">
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="skillsCount">0</span>
+                        <span class="stat-label">Skills</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="sessionsCount">0</span>
+                        <span class="stat-label">Sessions</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="ratingValue">0</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+                <div class="profile-contact">
+                    <h3>Contact</h3>
+                    <p id="profileEmail">user@example.com</p>
+                </div>
+                <div class="profile-availability">
+                    <h3>Availability</h3>
+                    <div id="availabilityContainer">
+                        <p class="empty-state">No availability set</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-main">
+                <div class="profile-section">
+                    <h2>About Me</h2>
+                    <p id="profileBio" class="bio-text">No bio available. Click "Edit Profile" to add a bio.</p>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Skills I Can Teach</h2>
+                    <div id="teachSkills" class="skills-list">
+                        <p class="empty-state">No skills added yet</p>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Skills I Want to Learn</h2>
+                    <div id="learnSkills" class="skills-list">
+                        <p class="empty-state">No skills added yet</p>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Experience</h2>
+                    <div id="experienceSection">
+                        <p class="experience-years"><span id="experienceYears">0</span> years of experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="editProfileModal">
+        <div class="modal-content">
+            <span class="close" id="closeEditProfile">&times;</span>
+            <h2>Edit Profile</h2>
+
+            <form id="profileEditForm">
+                <div class="form-group">
+                    <label for="editName">Full Name</label>
+                    <input type="text" id="editName" placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="editLocation">Location</label>
+                    <input type="text" id="editLocation" placeholder="City, Country">
+                </div>
+
+                <div class="form-group">
+                    <label for="editBio">Bio</label>
+                    <textarea id="editBio" rows="4" placeholder="Tell us about yourself, your experience, and your interests"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="editExperience">Years of Experience</label>
+                    <input type="number" id="editExperience" min="0" max="50">
+                </div>
+
+                <div class="form-group">
+                    <label>Skills I Can Teach</label>
+                    <div class="tag-input-container">
+                        <input type="text" id="teachSkillInput" placeholder="Add skills you can teach">
+                        <div id="selectedTeachSkills" class="selected-tags"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Skills I Want to Learn</label>
+                    <div class="tag-input-container">
+                        <input type="text" id="learnSkillInput" placeholder="Add skills you want to learn">
+                        <div id="selectedLearnSkills" class="selected-tags"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Availability</label>
+                    <div class="availability-options">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="availWeekdayMornings" value="weekday_mornings">
+                            <label for="availWeekdayMornings">Weekday Mornings</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="availWeekdayAfternoons" value="weekday_afternoons">
+                            <label for="availWeekdayAfternoons">Weekday Afternoons</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="availWeekdayEvenings" value="weekday_evenings">
+                            <label for="availWeekdayEvenings">Weekday Evenings</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="availWeekendMornings" value="weekend_mornings">
+                            <label for="availWeekendMornings">Weekend Mornings</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="availWeekendAfternoons" value="weekend_afternoons">
+                            <label for="availWeekendAfternoons">Weekend Afternoons</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="availWeekendEvenings" value="weekend_evenings">
+                            <label for="availWeekendEvenings">Weekend Evenings</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="primary-button">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
+    <script src="navbar.js"></script>
+</body>
+</html> 

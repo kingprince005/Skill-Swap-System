@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form-container">
+            <div class="login-header">
+                <h1>SkillSwap</h1>
+                <p>Sign in to your account</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="primary-button">Login</button>
+                </div>
+                
+                <div class="form-links">
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                    <div class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></div>
+                </div>
+            </form>
+            
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+        
+        <div class="login-info-container">
+            <div class="login-info">
+                <h2>Connect, Learn, Grow</h2>
+                <p>SkillSwap connects you with people who want to learn your skills and can teach you what you want to learn.</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="fas fa-exchange-alt"></i>
+                        <div>
+                            <h3>Exchange Skills</h3>
+                            <p>Trade your knowledge for skills you want to learn</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h3>Find Perfect Matches</h3>
+                            <p>Our AI matches you with compatible skill partners</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div>
+                            <h3>Schedule Sessions</h3>
+                            <p>Easily arrange and manage your learning sessions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html> 

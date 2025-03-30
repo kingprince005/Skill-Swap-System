@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form-container">
+            <div class="login-header">
+                <h1>SkillSwap</h1>
+                <p>Create your account</p>
+            </div>
+            
+            <form id="signupForm" class="login-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    <small class="password-hint">Password must be at least 8 characters long</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+                
+                <div class="terms-container">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="primary-button">Create Account</button>
+                </div>
+                
+                <div class="form-links">
+                    <div class="login-link">Already have an account? <a href="login.html">Log in</a></div>
+                </div>
+            </form>
+            
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+        
+        <div class="login-info-container">
+            <div class="login-info">
+                <h2>Join our Skill Exchange Community</h2>
+                <p>Create an account to start sharing your knowledge and learning new skills from others.</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="fas fa-user-plus"></i>
+                        <div>
+                            <h3>Create Your Profile</h3>
+                            <p>Add your skills and what you want to learn</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <i class="fas fa-search"></i>
+                        <div>
+                            <h3>Find Matches</h3>
+                            <p>Discover people with complementary skills</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <i class="fas fa-comments"></i>
+                        <div>
+                            <h3>Connect and Learn</h3>
+                            <p>Start conversations and begin learning sessions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="signup.js"></script>
+</body>
+</html> 

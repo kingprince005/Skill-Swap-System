@@ -1,0 +1,4 @@
+faker==19.13.0
+flask==3.0.2
+scikit-learn==1.4.1.post1
+numpy==1.26.4 

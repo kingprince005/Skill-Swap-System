@@ -1,0 +1,68 @@
+<!-- Profile Modal -->
+<div id="profileModal" class="modal">
+    <div class="modal-content profile-box">
+        <span class="close" onclick="closeProfileModal()">&times;</span>
+        <div class="profile-header">
+            <div class="profile-pic-large">
+                <span id="profileModalInitial">U</span>
+            </div>
+            <h2 id="profileModalName">User Name</h2>
+            <p id="profileModalEmail">user@example.com</p>
+        </div>
+        <div class="profile-stats">
+            <div class="stat-item">
+                <i class="fas fa-star"></i>
+                <span>Rating: 4.8</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-users"></i>
+                <span>Connections: 25</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-clock"></i>
+                <span>Member since: Jan 2024</span>
+            </div>
+        </div>
+        <div class="profile-skills">
+            <div class="skills-header">
+                <h3>My Skills</h3>
+                <button class="add-skill-btn" onclick="showAddSkillForm()">
+                    <i class="fas fa-plus"></i> Add Skill
+                </button>
+            </div>
+            <div class="skill-tags" id="userSkillsList">
+                <!-- Skills will be added here dynamically -->
+            </div>
+            <!-- Add Skill Form -->
+            <div id="addSkillForm" class="add-skill-form" style="display: none;">
+                <div class="form-group">
+                    <input type="text" id="skillName" placeholder="Skill Name" required>
+                </div>
+                <div class="form-group">
+                    <select id="experienceLevel" required>
+                        <option value="">Select Experience Level</option>
+                        <option value="Beginner">Beginner (0-1 years)</option>
+                        <option value="Intermediate">Intermediate (1-3 years)</option>
+                        <option value="Advanced">Advanced (3-5 years)</option>
+                        <option value="Expert">Expert (5+ years)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="yearsExperience" placeholder="Years of Experience" min="0" required>
+                </div>
+                <div class="form-actions">
+                    <button class="save-skill-btn" onclick="saveSkill()">Save Skill</button>
+                    <button class="cancel-skill-btn" onclick="hideAddSkillForm()">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="profile-actions">
+            <button class="edit-profile-btn" onclick="editProfile()">
+                <i class="fas fa-edit"></i> Edit Profile
+            </button>
+            <button class="change-password-btn" onclick="changePassword()">
+                <i class="fas fa-key"></i> Change Password
+            </button>
+        </div>
+    </div>
+</div> 

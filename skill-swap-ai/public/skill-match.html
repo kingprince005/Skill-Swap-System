@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap AI - Find Your Perfect Learning Match</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>SkillSwap<span>AI</span></h1>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/skill-match" class="active">Find Skills</a>
+                <a href="/my-skills">My Skills</a>
+                <a href="/messages">Messages</a>
+                <a href="/profile">Profile</a>
+            </div>
+            <div class="user-menu">
+                <button id="login-btn">Login</button>
+                <button id="signup-btn" class="primary-btn">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero skill-match-hero">
+            <div class="hero-content">
+                <h1>Find Your Perfect Learning Match</h1>
+                <p>Our AI-powered matching system connects you with the best people to learn from and teach to.</p>
+            </div>
+        </section>
+
+        <section class="skill-matching-section">
+            <div class="container">
+                <div class="matching-form">
+                    <h2>What would you like to learn?</h2>
+                    <form id="skill-search-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="skill-category">Field of Interest</label>
+                                <div class="select-wrapper">
+                                    <select id="skill-category" required>
+                                        <option value="" selected disabled>Choose a field...</option>
+                                        <option value="programming">Programming & Technology</option>
+                                        <option value="languages">Languages</option>
+                                        <option value="music">Music</option>
+                                        <option value="art">Art & Design</option>
+                                        <option value="business">Business</option>
+                                        <option value="cooking">Cooking</option>
+                                        <option value="fitness">Fitness</option>
+                                        <option value="crafts">Crafts</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Skills to Learn</label>
+                                <div class="skills-container" id="skills-container">
+                                    <div class="empty-skills-message">Select a field first to see available skills</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Skills You Can Teach (Optional)</label>
+                                <div class="skills-container" id="teach-skills-container">
+                                    <div class="empty-skills-message">Select a field first to see available skills</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="availability">Your Availability</label>
+                                <div class="select-wrapper">
+                                    <select id="availability" multiple>
+                                        <option value="weekday_morning">Weekday Mornings</option>
+                                        <option value="weekday_afternoon">Weekday Afternoons</option>
+                                        <option value="weekday_evening">Weekday Evenings</option>
+                                        <option value="weekend_morning">Weekend Mornings</option>
+                                        <option value="weekend_afternoon">Weekend Afternoons</option>
+                                        <option value="weekend_evening">Weekend Evenings</option>
+                                    </select>
+                                </div>
+                                <small class="help-text">Hold Ctrl/Cmd to select multiple time slots</small>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="primary-btn" id="find-matches-btn">
+                                <i class="fas fa-magic"></i> Find AI-Powered Matches
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="results-section" id="results-section" style="display: none;">
+                    <h2>Your Best Matches</h2>
+                    <p class="results-description">Here are your personalized matches based on skill compatibility, availability, and teaching experience.</p>
+                    
+                    <div class="match-filters">
+                        <button class="filter-btn active" data-filter="best">Best Matches</button>
+                        <button class="filter-btn" data-filter="availability">Best Availability</button>
+                        <button class="filter-btn" data-filter="rating">Highest Rated</button>
+                        <button class="filter-btn" data-filter="experience">Most Experienced</button>
+                    </div>
+
+                    <div class="results-container" id="results-container">
+                        <div class="no-results" id="no-results">
+                            <i class="fas fa-search"></i>
+                            <p>Select your learning preferences to find your perfect matches!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+        <p>Our AI is finding your perfect skill matches...</p>
+    </div>
+
+    <!-- Match Details Modal -->
+    <div class="modal" id="match-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="/js/skill-match.js"></script>
+</body>
+</html> 

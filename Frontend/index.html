@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap AI - AI-Powered Skill Exchange Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>SkillSwap</h1>
+        </div>
+        <div class="search-container">
+            <input type="text" id="skillSearch" placeholder="Search for skills...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="skills.html">Find Skills</a>
+            <a href="messages.html">Messages</a>
+            
+            <!-- Auth buttons for logged out users -->
+            <div class="auth-buttons">
+                <button class="login-btn" onclick="openLoginModal()">Login</button>
+                <button class="signup-btn" onclick="openSignupModal()">Sign Up</button>
+            </div>
+            
+            <!-- Profile dropdown for logged in users -->
+            <div class="profile-dropdown" id="profileDropdown" style="display: none;">
+                <div class="profile-icon" onclick="toggleDropdown()">
+                    <span id="userInitial">U</span>
+                </div>
+                <div class="dropdown-menu">
+                    <a href="profile.html">My Profile</a>
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Exchange Skills with AI-Powered Matching</h1>
+            <p>Connect with peers who share your interests and learn together</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-us">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Our Mission</h3>
+                        <p>At SkillSwap AI, we're revolutionizing the way people learn and share skills. Our platform connects learners with experts, making education accessible, personalized, and engaging.</p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="1000">0</span>
+                                <span class="stat-label">Active Users</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="500">0</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="50">0</span>
+                                <span class="stat-label">Team Members</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="../Image/about us.jpg" alt="Learning Together">
+                    </div>
+                </div>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <img src="../Image/quality education.jpg" alt="Quality Education">
+                        <h4>Quality Education</h4>
+                        <p>Learn from verified experts in your field of interest</p>
+                    </div>
+                    <div class="about-feature">
+                        <img src="../Image/stromg community.jpg" alt="Community">
+                        <h4>Strong Community</h4>
+                        <p>Join a vibrant community of learners and educators</p>
+                    </div>
+                    <div class="about-feature">
+                        <img src="../Image/Innovation.jpg" alt="Innovation">
+                        <h4>Innovation</h4>
+                        <p>Leveraging AI to create personalized learning experiences</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2>Our Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-robot"></i>
+                <h3>Smart AI Matching</h3>
+                <p>Our AI analyzes your skills and interests to find perfect learning partners</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-user-circle"></i>
+                <h3>Interactive Profiles</h3>
+                <p>Create detailed profiles showcasing your skills and learning goals</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Skill Learning</h3>
+                <p>Access a wide range of skills to learn from expert peers</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-star"></i>
+                <h3>Rating System</h3>
+                <p>Get feedback and ratings from your learning partners</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Available Skills Section -->
+    <section id="available-skills" class="available-skills py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Available Skills</h2>
+            <div class="skills-collage-container">
+                <div class="skills-collage">
+                    <div class="collage-item">
+                        <img src="../Image/web development.jpg" alt="Web Development">
+                        <div class="skill-overlay">
+                            <h3>Web Development</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/UI-UX.jpg" alt="Digital Art">
+                        <div class="skill-overlay">
+                            <h3>Digital Art</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/photography.jpg" alt="Photography">
+                        <div class="skill-overlay">
+                            <h3>Photography</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/mobile development.jpg" alt="Mobile Development">
+                        <div class="skill-overlay">
+                            <h3>Mobile Development</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/digital marketing.jpg" alt="Digital Marketing">
+                        <div class="skill-overlay">
+                            <h3>Digital Marketing</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/data science.jpg" alt="Business Analytics">
+                        <div class="skill-overlay">
+                            <h3>Business Analytics</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/AI.jpg" alt="English Language">
+                        <div class="skill-overlay">
+                            <h3>English Language</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/UI-UX.jpg" alt="Spanish Language">
+                        <div class="skill-overlay">
+                            <h3>Spanish Language</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/AI.jpg" alt="Guitar">
+                        <div class="skill-overlay">
+                            <h3>Guitar</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/photography.jpg" alt="Piano">
+                        <div class="skill-overlay">
+                            <h3>Piano</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/Cloud-Computing.jpg" alt="Cooking">
+                        <div class="skill-overlay">
+                            <h3>Cooking</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/cyber-security.jpg" alt="Baking">
+                        <div class="skill-overlay">
+                            <h3>Baking</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Duplicated items for infinite scroll -->
+                    <div class="collage-item">
+                        <img src="../Image/web development.jpg" alt="Web Development">
+                        <div class="skill-overlay">
+                            <h3>Web Development</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/UI-UX.jpg" alt="Digital Art">
+                        <div class="skill-overlay">
+                            <h3>Digital Art</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/photography.jpg" alt="Photography">
+                        <div class="skill-overlay">
+                            <h3>Photography</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/mobile development.jpg" alt="Mobile Development">
+                        <div class="skill-overlay">
+                            <h3>Mobile Development</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/digital marketing.jpg" alt="Digital Marketing">
+                        <div class="skill-overlay">
+                            <h3>Digital Marketing</h3>
+                        </div>
+                    </div>
+
+                    <div class="collage-item">
+                        <img src="../Image/data science.jpg" alt="Business Analytics">
+                        <div class="skill-overlay">
+                            <h3>Business Analytics</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <!-- Adding Learn More button -->
+                <a href="skills.html" class="learn-more-btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content login-box">
+            <span class="close">&times;</span>
+            <div class="logo">
+                <h1>SkillSwap</h1>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="login-email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                </div>
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+                
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+
+                <div class="signup-link">
+                    Don't have an account? <a href="#" onclick="closeLoginModal(); openSignupModal();">Sign up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content login-box signup-box">
+            <span class="close">&times;</span>
+            <div class="logo">
+                <h1>SkillSwap</h1>
+            </div>
+            <form id="signupForm" class="login-form">
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="fullName" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="signup-email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="signup-password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-briefcase"></i>
+                    <input type="text" id="skills" placeholder="Your Skills (comma separated)" required>
+                </div>
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="terms" required>
+                        <span>I agree to the <a href="#">Terms & Conditions</a></span>
+                    </label>
+                </div>
+                <button type="submit" class="login-btn">Sign Up</button>
+                
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                
+
+                <div class="signup-link">
+                    Already have an account? <a href="#" onclick="closeSignupModal(); openLoginModal();">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="modal" id="profileModal">
+        <div class="modal-content profile-modal">
+            <span class="close" onclick="closeProfileModal()">&times;</span>
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-pic" id="profilePicContainer">
+                        <span id="profileInitial">U</span>
+                        <div class="profile-pic-upload">
+                            <i class="fas fa-camera"></i>
+                            <input type="file" id="profileImageUpload" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="profileName">User Name</h2>
+                        <p id="profileEmail">user@example.com</p>
+                    </div>
+                </div>
+                <div class="profile-bio">
+                    <h3>About Me</h3>
+                    <p id="profileBio" class="bio-text">No bio available. Click "Edit Profile" to add a bio.</p>
+                </div>
+                <div class="profile-section">
+                    <h3>Skills I Can Teach</h3>
+                    <div id="teachSkills" class="skills-list">
+                        <p class="empty-state">No skills added yet</p>
+                    </div>
+                    <div class="skill-input-container">
+                        <input type="text" id="addTeachSkill" placeholder="Add a skill you can teach" class="skill-input">
+                        <button type="button" id="addTeachSkillBtn" class="add-skill-btn">Add</button>
+                    </div>
+                </div>
+                <div class="profile-section">
+                    <h3>Skills I Want to Learn</h3>
+                    <div id="learnSkills" class="skills-list">
+                        <p class="empty-state">No skills added yet</p>
+                    </div>
+                    <div class="skill-input-container">
+                        <input type="text" id="addLearnSkill" placeholder="Add a skill you want to learn" class="skill-input">
+                        <button type="button" id="addLearnSkillBtn" class="add-skill-btn">Add</button>
+                    </div>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="skillsCount">0</span>
+                        <span class="stat-label">Skills</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="sessionsCount">0</span>
+                        <span class="stat-label">Sessions</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="ratingValue">0</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button id="editProfileBtn" class="edit-profile-btn">
+                        <i class="fas fa-edit"></i> Edit Full Profile
+                    </button>
+                    <button id="saveProfileChangesBtn" class="save-profile-btn">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skill Matching Modal -->
+    <div class="modal" id="skillMatchModal">
+        <div class="modal-content skill-match-modal">
+            <span class="close" onclick="closeSkillMatchModal()">&times;</span>
+            <div class="skill-match-container">
+                <h2>Find Your Perfect Learning Match</h2>
+                <p>Our AI will match you with the best teachers for your desired skills</p>
+                
+                <div class="skill-match-form">
+                    <div class="form-group">
+                        <label>Skills you want to learn:</label>
+                        <div class="skill-select-container">
+                            <select id="wantedSkills" multiple class="skill-select">
+                                <!-- Skills will be added by JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Skills you can teach (optional):</label>
+                        <div class="skill-select-container">
+                            <select id="offeredSkills" multiple class="skill-select">
+                                <!-- Skills will be added by JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Your availability:</label>
+                        <select id="availability" class="form-control">
+                            <option value="">Any availability</option>
+                            <option value="Available">Available</option>
+                            <option value="Busy">Busy</option>
+                            <option value="Learning">Learning</option>
+                        </select>
+                    </div>
+                    
+                    <button id="findMatchesBtn" class="match-search-btn">Find Matches</button>
+                </div>
+                
+                <div id="matchLoading" class="match-loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Finding your perfect matches...</p>
+                </div>
+                
+                <div id="noMatchesFound" class="no-matches" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No matches found</h3>
+                    <p>Try selecting different skills or broadening your search.</p>
+                </div>
+                
+                <div id="matchResults" class="match-results">
+                    <!-- Match cards will be added here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content edit-profile-modal">
+            <span class="close" onclick="closeEditProfileModal()">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="editProfileForm">
+                <div class="form-group">
+                    <label for="editName">Name</label>
+                    <input type="text" id="editName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editEmail">Email</label>
+                    <input type="email" id="editEmail" required>
+                </div>
+                <div class="bio-box">
+                    <label for="editBio">About Me</label>
+                    <textarea id="editBio" placeholder="Tell us about yourself..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editSkills">Skills</label>
+                    <div class="skills-input-container">
+                        <div class="selected-skills" id="selectedSkills"></div>
+                        <input type="text" id="editSkills" placeholder="Type a skill and press Enter">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Experience</label>
+                    <div id="experienceList">
+                        <div class="experience-input">
+                            <input type="text" placeholder="Position" class="experience-position">
+                            <input type="text" placeholder="Company" class="experience-company">
+                            <input type="text" placeholder="Duration" class="experience-duration">
+                            <textarea placeholder="Description" class="experience-description"></textarea>
+                            <button type="button" class="remove-experience">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" class="add-experience-btn">Add Experience</button>
+                </div>
+                <div class="form-group">
+                    <label for="editPassword">New Password (leave blank to keep current)</label>
+                    <input type="password" id="editPassword">
+            </div>
+                <button type="submit" class="cta-button">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About SkillSwap AI</h3>
+                <p>Empowering individuals to learn and grow through AI-powered skill exchange. Connect with peers, share knowledge, and develop new skills together.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#login">Login</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Popular Skills</h3>
+                <ul>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Data Science</a></li>
+                    <li><a href="#">UI/UX Design</a></li>
+                    <li><a href="#">Mobile Development</a></li>
+                    <li><a href="#">Digital Marketing</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> support@skillswapai.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Digital City</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 SkillSwap AI. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            <p class="project-credit">Project by <a href="#">Hack Hustles</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="navbar.js"></script>
+</body>
+</html> 
