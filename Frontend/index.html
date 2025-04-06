@@ -15,12 +15,14 @@
         </div>
         <div class="search-container">
             <input type="text" id="skillSearch" placeholder="Search for skills...">
-            <button><i class="fas fa-search"></i></button>
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+            <button class="clear-search" style="display: none;"><i class="fas fa-times"></i></button>
         </div>
         <div class="nav-links">
             <a href="index.html" class="active">Home</a>
-            <a href="skills.html">Find Skills</a>
-            <a href="messages.html">Messages</a>
+            <a href="#about-us" onclick="scrollToSection('about-us', event)">About Us</a>
+            <a href="#features" onclick="scrollToSection('features', event)">Our Features</a>
+            <a href="#available-skills" onclick="scrollToSection('available-skills', event)">Available Skills</a>
             
             <!-- Auth buttons for logged out users -->
             <div class="auth-buttons">
@@ -57,7 +59,7 @@
     </section>
 
     <!-- About Us Section -->
-    <section class="about-us">
+    <section id="about-us" class="about-us">
         <div class="container">
             <h2 class="section-title">About Us</h2>
             <div class="about-grid">

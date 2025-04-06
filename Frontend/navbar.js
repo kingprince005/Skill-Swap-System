@@ -11,6 +11,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check user authentication state
     checkAuthState();
+    
+    // Add event listeners for navigation links
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            // Make sure profile dropdown stays visible if it should be
+            setTimeout(checkAuthState, 100);
+        });
+    });
+    
+    // Add global click event to maintain auth state
+    document.addEventListener('click', function(e) {
+        // Don't interfere with the dropdown toggle functionality
+        if (!e.target.closest('.profile-icon')) {
+            setTimeout(checkAuthState, 100);
+        }
+    });
 });
 
 // Function to initialize navbar
@@ -34,6 +51,9 @@ function toggleMobileMenu() {
     
     navLinks.classList.toggle('show-mobile');
     hamburger.classList.toggle('active');
+    
+    // Make sure profile dropdown visibility is maintained
+    setTimeout(checkAuthState, 50);
 }
 
 // Function to check authentication state
@@ -82,4 +102,16 @@ function toggleDropdown() {
 function logout() {
     localStorage.removeItem('currentUser');
     window.location.href = 'login.html';
+}
+
+// Function to scroll to a section smoothly
+function scrollToSection(sectionId, e) {
+    if (e) e.preventDefault(); // Prevent default link behavior
+    const section = document.getElementById(sectionId);
+    if (section) {
+        window.scrollTo({
+            top: section.offsetTop - 80, // Account for navbar height
+            behavior: 'smooth'
+        });
+    }
 } 

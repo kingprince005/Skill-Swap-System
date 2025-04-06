@@ -1407,4 +1407,124 @@ document.addEventListener('DOMContentLoaded', function() {
     if (findMatchesBtn) {
         findMatchesBtn.addEventListener('click', findSkillMatches);
     }
-}); 
+});
+
+// Setup search functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the search input and search button
+    const searchInput = document.getElementById('skillSearch');
+    const searchButton = document.querySelector('.search-container .search-btn');
+    const clearButton = document.querySelector('.search-container .clear-search');
+    
+    if (searchInput && searchButton) {
+        // Add click event to search button
+        searchButton.addEventListener('click', function() {
+            performSearch(searchInput.value);
+        });
+        
+        // Add enter key event to search input
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch(searchInput.value);
+            }
+        });
+        
+        // Add clear button event
+        if (clearButton) {
+            clearButton.addEventListener('click', function() {
+                resetSearch();
+            });
+        }
+    }
+});
+
+// Function to perform search
+function performSearch(searchTerm) {
+    // If search is empty, reset display to show all skills
+    if (!searchTerm || searchTerm.trim() === '') {
+        resetSearch();
+        return;
+    }
+    
+    // Scroll to the available skills section
+    const availableSkillsSection = document.getElementById('available-skills');
+    if (availableSkillsSection) {
+        window.scrollTo({
+            top: availableSkillsSection.offsetTop - 80,
+            behavior: 'smooth'
+        });
+        
+        // Show only matching skills (no highlighting)
+        highlightMatchingSkills(searchTerm);
+        
+        // Show clear button
+        const clearBtn = document.querySelector('.clear-search');
+        if (clearBtn) {
+            clearBtn.style.display = 'block';
+        }
+    }
+}
+
+// Function to reset search and show all skills
+function resetSearch() {
+    const skillItems = document.querySelectorAll('.collage-item');
+    skillItems.forEach(item => {
+        // Remove any highlight effects and show all skills
+        item.classList.remove('highlight-skill');
+        item.style.display = 'block';
+    });
+    
+    // Hide clear button
+    const clearBtn = document.querySelector('.clear-search');
+    if (clearBtn) {
+        clearBtn.style.display = 'none';
+    }
+    
+    // Clear search input
+    const searchInput = document.getElementById('skillSearch');
+    if (searchInput) {
+        searchInput.value = '';
+    }
+}
+
+// Function to highlight matching skills
+function highlightMatchingSkills(searchTerm) {
+    const skillItems = document.querySelectorAll('.collage-item');
+    searchTerm = searchTerm.toLowerCase();
+    let found = false;
+    let foundTitles = new Set(); // Track which titles we've already shown
+    
+    skillItems.forEach(item => {
+        const skillTitle = item.querySelector('.skill-overlay h3');
+        
+        if (skillTitle) {
+            const title = skillTitle.textContent.toLowerCase();
+            
+            if (title.includes(searchTerm)) {
+                // Check if we've already found this title
+                if (!foundTitles.has(title)) {
+                    // First occurrence - show it
+                    item.style.display = 'block';
+                    item.classList.remove('highlight-skill');
+                    found = true;
+                    foundTitles.add(title); // Track that we've found this title
+                } else {
+                    // Duplicate title - hide it
+                    item.style.display = 'none';
+                }
+            } else {
+                // Hide non-matching skills
+                item.style.display = 'none';
+            }
+        }
+    });
+    
+    // Show notification if no matching skills found
+    if (!found && skillItems.length > 0) {
+        showNotification('No matching skills found. Try a different search term.', 'info');
+        // If no matches found, show all skills again
+        skillItems.forEach(item => {
+            item.style.display = 'block';
+        });
+    }
+} 

@@ -88,6 +88,20 @@ body {
     padding: 0.5rem;
 }
 
+.search-container .clear-search {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: -0.5rem;
+}
+
+.search-container .clear-search:hover {
+    color: var(--primary-color);
+}
+
 .search-container:focus-within {
     border-color: var(--primary-color);
     box-shadow: 0 0 10px rgba(249, 115, 22, 0.2);
@@ -3147,4 +3161,31 @@ h1, h2, h3, h4 {
 .notification.info {
     background: #3498db;
     color: white;
+}
+
+/* Highlighted skill animation */
+.highlight-skill {
+    animation: pulse-highlight 1.5s infinite alternate;
+    transform: scale(1.05);
+    z-index: 10;
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.8);
+    border-radius: 8px;
+    position: relative;
+}
+
+@keyframes pulse-highlight {
+    0% {
+        box-shadow: 0 0 15px rgba(249, 115, 22, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(249, 115, 22, 0.9);
+    }
+}
+
+.highlight-skill .skill-overlay {
+    background: rgba(249, 115, 22, 0.8);
+}
+
+.highlight-skill img {
+    filter: brightness(1.1);
 }
